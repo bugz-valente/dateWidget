@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Widget</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0; /* Optional, can be transparent if needed */
+        }
+
+        .date-widget {
+            font-family: "Courier New", Courier, monospace;
+            color: #ffffff;
+            background-color: #32cd32; /* Green */
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="date-widget" id="dateWidget">DD MMM YYYY</div>
+
+    <script>
+        function updateDate() {
+            const dateElement = document.getElementById('dateWidget');
+            const today = new Date();
+
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = today.toLocaleString('default', { month: 'short' });
+            const year = today.getFullYear();
+
+            dateElement.textContent = `${day} ${month} ${year}`;
+        }
+
+        // Update the date immediately on load
+        updateDate();
+
+        // Optional: Update every 24 hours if the widget is kept running
+        setInterval(updateDate, 24 * 60 * 60 * 1000);
+    </script>
+</body>
+</html>
